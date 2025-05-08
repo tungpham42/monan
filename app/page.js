@@ -1,16 +1,25 @@
+"use client";
+import React, { useState, useEffect } from "react";
 import { Suspense } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import RecipeList from "@/components/RecipeList";
 import { Spinner, Container } from "react-bootstrap";
 
-export default async function Home() {
+export default function Home() {
+  const [recipes, setRecipes] = useState([]);
   // Fetch recipes server-side
-  const querySnapshot = await getDocs(collection(db, "recipes"));
-  const recipes = querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
+  useEffect(() => {
+    const fetchRecipes = async () => {
+      const querySnapshot = await getDocs(collection(db, "recipes"));
+      const recipeData = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setRecipes(recipeData);
+    };
+    fetchRecipes();
+  }, []);
 
   return (
     <Container>
