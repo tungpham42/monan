@@ -43,6 +43,9 @@ const EditRecipe = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
 
+  const CLOUDINARY_CLOUD_NAME = "filecuatui";
+  const CLOUDINARY_UPLOAD_PRESET = "recipe";
+
   useEffect(() => {
     // Subscribe to Firebase Auth state changes
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -99,14 +102,11 @@ const EditRecipe = () => {
   const handleImageUpload = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append(
-      "upload_preset",
-      process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
-    );
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
     try {
       const response = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
+        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
         {
           method: "POST",
           body: formData,
