@@ -247,8 +247,9 @@ const AddRecipe = () => {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </Form.Group>
-        <Button type="submit" variant="primary">
-          <FontAwesomeIcon icon={faPlus} className="me-1" /> Thêm Công Thức
+        <Button type="submit" variant="primary" disabled={loading}>
+          <FontAwesomeIcon icon={faPlus} className="me-1" />
+          {loading ? "Đang xử lý..." : "Thêm Công Thức"}
         </Button>
       </Form>
 
