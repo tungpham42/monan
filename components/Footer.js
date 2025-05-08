@@ -23,7 +23,7 @@ const Footer = () => {
           </a>
           {", "}
           <a
-            href="https://github.com/tungpham42/recipe"
+            href="https://github.com/tungpham42/monan"
             target="_blank"
             rel="noopener noreferrer"
             className="text-dark text-decoration-none"

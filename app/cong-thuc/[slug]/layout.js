@@ -50,12 +50,15 @@ export async function generateMetadata({ params }) {
     }
 
     const recipeData = recipeSnapshot.docs[0].data();
+    const description =
+      recipeData.description ||
+      "Khám phá công thức nấu ăn ngon tại monan.io.vn!";
     return {
       title: `${recipeData.title} - Nền tảng chia sẻ công thức nấu ăn`,
-      description: "Khám phá công thức nấu ăn ngon tại monan.io.vn!",
+      description,
       openGraph: {
         title: `${recipeData.title} - Nền tảng chia sẻ công thức nấu ăn`,
-        description: "Khám phá công thức nấu ăn ngon tại monan.io.vn!",
+        description,
         type: "website",
         url: `https://monan.io.vn/cong-thuc/${slug}`,
         images: recipeData.imageUrl
