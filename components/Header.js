@@ -26,9 +26,14 @@ const Header = () => {
 
   // Listen for authentication state changes
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      setIsAdmin(currentUser ? isAdminUser(currentUser) : false); // Check admin status
+      if (currentUser) {
+        const adminStatus = await isAdminUser(currentUser); // Ensure async admin check
+        setIsAdmin(adminStatus);
+      } else {
+        setIsAdmin(false);
+      }
       setLoading(false); // Authentication state resolved
     });
 
@@ -46,14 +51,12 @@ const Header = () => {
     }
   };
 
-  // Render nothing or a loading spinner while authentication state is resolving
+  // Render nothing while authentication state is resolving
   if (loading) {
     return null; // Or a loading spinner: <div>Loading...</div>
   }
 
   const isLoggedIn = !!user;
-  const isUser = user && !isAdmin;
-  const isGuest = !user;
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">

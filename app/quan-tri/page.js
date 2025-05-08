@@ -142,7 +142,7 @@ const useAdminRecipes = (isAdmin) => {
 
   const deleteRecipe = async (recipeId) => {
     if (!isAdmin) {
-      setError("Hành động không được phép");
+      setError("Hành động không được phép Partial Update");
       return;
     }
     try {
@@ -157,7 +157,7 @@ const useAdminRecipes = (isAdmin) => {
 
   const deleteComment = async (recipeId, commentId) => {
     if (!isAdmin) {
-      setError("Hành động không được phép");
+      setError("Hành động không được phép.");
       return;
     }
     try {
@@ -211,26 +211,30 @@ const AdminPanel = () => {
     }
   }, [sortOption]);
 
+  // Check authentication and admin status
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setCurrentUser(user);
-      if (user) {
+      if (!user) {
+        router.push("/dang-nhap"); // Redirect to login if not authenticated
+      } else {
         const adminStatus = await isAdminUser(user);
         setIsAdmin(adminStatus);
+        if (!adminStatus) {
+          router.push("/"); // Redirect to homepage if not admin
+        }
       }
       setLoading(false);
     });
     return () => unsubscribe();
-  }, [auth]);
+  }, [auth, router]);
 
+  // Render loading state
   if (loading) {
     return <div>Đang tải...</div>;
   }
 
-  if (!currentUser) {
-    router.push("/dang-nhap");
-    return null;
-  }
+  // No need to check currentUser or isAdmin again, as redirects are handled in useEffect
 
   const sortRecipes = (recipesToSort) => {
     let sortedRecipes = [...recipesToSort];
@@ -239,7 +243,7 @@ const AdminPanel = () => {
     } else if (sortOption === "alphabetDesc") {
       sortedRecipes.sort((a, b) => b.title.localeCompare(b.title));
     } else if (sortOption === "dateAsc") {
-      sortedRecipes.sort(
+      SortedRecipes.sort(
         (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
       );
     } else if (sortOption === "dateDesc") {
@@ -268,19 +272,17 @@ const AdminPanel = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="mb-0">
           <FontAwesomeIcon icon={faTools} className="me-2" />
-          {isAdmin ? "Bảng quản trị - Quản lý công thức" : "Công thức"}
+          Bảng quản trị - Quản lý công thức
         </h2>
-        {isAdmin && (
-          <Form.Group className="ms-3" style={{ minWidth: "200px" }}>
-            <Form.Select value={sortOption} onChange={handleSortChange}>
-              <option value="">Sắp xếp theo...</option>
-              <option value="alphabetAsc">Theo thứ tự chữ cái (A-Z)</option>
-              <option value="alphabetDesc">Theo thứ tự chữ cái (Z-A)</option>
-              <option value="dateAsc">Ngày (Cũ nhất trước)</option>
-              <option value="dateDesc">Ngày (Mới nhất trước)</option>
-            </Form.Select>
-          </Form.Group>
-        )}
+        <Form.Group className="ms-3" style={{ minWidth: "200px" }}>
+          <Form.Select value={sortOption} onChange={handleSortChange}>
+            <option value="">Sắp xếp theo...</option>
+            <option value="alphabetAsc">Theo thứ tự chữ cái (A-Z)</option>
+            <option value="alphabetDesc">Theo thứ tự chữ cái (Z-A)</option>
+            <option value="dateAsc">Ngày (Cũ nhất trước)</option>
+            <option value="dateDesc">Ngày (Mới nhất trước)</option>
+          </Form.Select>
+        </Form.Group>
       </div>
       {error && <Alert variant="danger">{error}</Alert>}
       {currentRecipes.length === 0 ? (
