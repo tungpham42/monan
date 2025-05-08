@@ -10,7 +10,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { Form, Button, Alert, Image } from "react-bootstrap";
+import { Form, Button, Alert, Image, Modal } from "react-bootstrap";
 import { useRouter, useParams } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -39,6 +39,8 @@ const EditRecipe = () => {
   const [error, setError] = useState("");
   const [recipeId, setRecipeId] = useState(null);
   const [youtubeUrl, setYoutubeUrl] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [newRecipeSlug, setNewRecipeSlug] = useState("");
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
@@ -47,13 +49,10 @@ const EditRecipe = () => {
   const CLOUDINARY_UPLOAD_PRESET = "recipe";
 
   useEffect(() => {
-    // Subscribe to Firebase Auth state changes
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setAuthLoaded(true); // Mark auth state as resolved
+      setAuthLoaded(true);
     });
-
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, []);
 
@@ -65,7 +64,7 @@ const EditRecipe = () => {
       }
 
       if (!currentUser) {
-        router.push("/dang-nhap"); // Redirect to login if not authenticated
+        router.push("/dang-nhap");
         return;
       }
 
@@ -151,7 +150,6 @@ const EditRecipe = () => {
     }
 
     try {
-      // Validate YouTube URL if provided
       if (youtubeUrl && !isValidYoutubeUrl(youtubeUrl)) {
         setError("Liên kết YouTube không hợp lệ");
         return;
@@ -177,10 +175,17 @@ const EditRecipe = () => {
         slug: newSlug,
         updatedAt: new Date().toISOString(),
       });
-      router.push(`/cong-thuc/${newSlug}`);
+
+      setNewRecipeSlug(newSlug);
+      setShowSuccessModal(true);
     } catch (err) {
       setError(err.message || "Cập nhật công thức thất bại.");
     }
+  };
+
+  const handleModalClose = () => {
+    setShowSuccessModal(false);
+    router.push(`/cong-thuc/${newRecipeSlug}`);
   };
 
   return (
@@ -308,6 +313,20 @@ const EditRecipe = () => {
           Cập nhật công thức
         </Button>
       </Form>
+
+      <Modal show={showSuccessModal} onHide={handleModalClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Cập Nhật Công Thức Thành Công</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Công thức <strong>{title}</strong> đã được cập nhật thành công!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleModalClose}>
+            Xem Công Thức
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button, Alert, Modal } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -34,24 +34,22 @@ const AddRecipe = () => {
   const [imageFile, setImageFile] = useState(null);
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [newRecipeSlug, setNewRecipeSlug] = useState("");
   const router = useRouter();
 
   const CLOUDINARY_CLOUD_NAME = "filecuatui";
   const CLOUDINARY_UPLOAD_PRESET = "recipe";
 
-  // Check authentication state
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (!user) {
-        // If user is not logged in, redirect to login page
-        router.push("/dang-nhap"); // Adjust the route to your login page
+        router.push("/dang-nhap");
       } else {
-        setLoading(false); // User is authenticated, allow page rendering
+        setLoading(false);
       }
     });
-
-    // Cleanup subscription on unmount
     return () => unsubscribe();
   }, [router]);
 
@@ -125,15 +123,20 @@ const AddRecipe = () => {
         await updateDoc(docRef, { slug });
       }
 
-      router.push(`/cong-thuc/${slug}`);
+      setNewRecipeSlug(slug);
+      setShowSuccessModal(true);
     } catch (err) {
       setError(err.message || "Không thể thêm công thức.");
     }
   };
 
-  // Prevent rendering the form while checking auth state
+  const handleModalClose = () => {
+    setShowSuccessModal(false);
+    router.push(`/cong-thuc/${newRecipeSlug}`);
+  };
+
   if (loading) {
-    return <div>Đang kiểm tra trạng thái đăng nhập...</div>; // Optional loading indicator
+    return <div>Đang kiểm tra trạng thái đăng nhập...</div>;
   }
 
   return (
@@ -248,6 +251,20 @@ const AddRecipe = () => {
           <FontAwesomeIcon icon={faPlus} className="me-1" /> Thêm Công Thức
         </Button>
       </Form>
+
+      <Modal show={showSuccessModal} onHide={handleModalClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Thêm Công Thức Thành Công</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Công thức <strong>{title}</strong> đã được thêm thành công!
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleModalClose}>
+            Xem Công Thức
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
