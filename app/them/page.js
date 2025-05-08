@@ -252,7 +252,11 @@ const AddRecipe = () => {
         </Button>
       </Form>
 
-      <Modal show={showSuccessModal} onHide={handleModalClose} centered>
+      <Modal
+        show={showSuccessModal}
+        onHide={() => setShowSuccessModal(false)}
+        centered
+      >
         <Modal.Header>
           <Modal.Title>Thêm Công Thức Thành Công</Modal.Title>
         </Modal.Header>
