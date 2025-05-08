@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import { db, auth } from "@/firebase/config";
 import {
@@ -34,7 +35,7 @@ const AddRecipe = () => {
   const [imageFile, setImageFile] = useState(null);
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Changed to false initially
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newRecipeSlug, setNewRecipeSlug] = useState("");
   const router = useRouter();
@@ -91,9 +92,11 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when submission starts
     try {
       if (youtubeUrl && !isValidYoutubeUrl(youtubeUrl)) {
         setError("URL YouTube không hợp lệ");
+        setLoading(false); // Reset loading on error
         return;
       }
 
@@ -127,6 +130,8 @@ const AddRecipe = () => {
       setShowSuccessModal(true);
     } catch (err) {
       setError(err.message || "Không thể thêm công thức.");
+    } finally {
+      setLoading(false); // Reset loading after submission completes
     }
   };
 
@@ -247,8 +252,9 @@ const AddRecipe = () => {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </Form.Group>
-        <Button type="submit" variant="primary">
-          <FontAwesomeIcon icon={faPlus} className="me-1" /> Thêm Công Thức
+        <Button type="submit" variant="primary" disabled={loading}>
+          <FontAwesomeIcon icon={faPlus} className="me-1" />{" "}
+          {loading ? "Đang xử lý..." : "Thêm Công Thức"}
         </Button>
       </Form>
 

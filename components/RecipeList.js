@@ -98,7 +98,10 @@ export default function RecipeList({ recipes }) {
                 type="text"
                 placeholder="Tìm kiếm công thức..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => {
+                  setSearchTerm(e.target.value);
+                  setCurrentPage(1); // Reset to page 1 on search change
+                }}
               />
               <FontAwesomeIcon
                 icon={faSearch}
@@ -115,7 +118,10 @@ export default function RecipeList({ recipes }) {
             <Form.Group>
               <Form.Select
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                  setCurrentPage(1); // Reset to page 1 on category change
+                }}
               >
                 <option value="">Tất cả danh mục</option>
                 <option value="Breakfast">Bữa sáng</option>
@@ -129,7 +135,10 @@ export default function RecipeList({ recipes }) {
             <Form.Group>
               <Form.Select
                 value={sortOption}
-                onChange={(e) => setSortOption(e.target.value)}
+                onChange={(e) => {
+                  setSortOption(e.target.value);
+                  setCurrentPage(1); // Reset to page 1 on sort change
+                }}
               >
                 <option value="">Sắp xếp theo...</option>
                 <option value="alphabetAsc">Theo thứ tự chữ cái (A-Z)</option>
