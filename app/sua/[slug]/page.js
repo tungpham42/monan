@@ -1,4 +1,3 @@
-// page.js (EditRecipe)
 "use client";
 
 import React, { useEffect, useState } from "react";
@@ -42,7 +41,7 @@ const EditRecipe = () => {
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newRecipeSlug, setNewRecipeSlug] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
+  const [isSubmitting, setIsSubmitting] = useState(false); // Renamed loading to isSubmitting
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
@@ -151,11 +150,10 @@ const EditRecipe = () => {
       return;
     }
 
-    setLoading(true); // Set loading to true when submission starts
+    setIsSubmitting(true); // Set isSubmitting to true when submission starts
     try {
       if (youtubeUrl && !isValidYoutubeUrl(youtubeUrl)) {
         setError("Liên kết YouTube không hợp lệ");
-        setLoading(false); // Reset loading on error
         return;
       }
 
@@ -185,7 +183,7 @@ const EditRecipe = () => {
     } catch (err) {
       setError(err.message || "Cập nhật công thức thất bại.");
     } finally {
-      setLoading(false); // Reset loading after submission completes
+      setIsSubmitting(false); // Reset isSubmitting after submission completes
     }
   };
 
@@ -314,9 +312,9 @@ const EditRecipe = () => {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </Form.Group>
-        <Button type="submit" variant="primary" disabled={loading}>
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
           <FontAwesomeIcon icon={faSave} className="me-1" />
-          {loading ? "Đang xử lý..." : "Cập nhật công thức"}
+          {isSubmitting ? "Đang xử lý..." : "Cập nhật công thức"}
         </Button>
       </Form>
 

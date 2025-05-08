@@ -34,7 +34,8 @@ const AddRecipe = () => {
   const [imageFile, setImageFile] = useState(null);
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [isAuthLoading, setIsAuthLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newRecipeSlug, setNewRecipeSlug] = useState("");
   const router = useRouter();
@@ -47,7 +48,7 @@ const AddRecipe = () => {
       if (!user) {
         router.push("/dang-nhap");
       } else {
-        setLoading(false);
+        setIsAuthLoading(false);
       }
     });
     return () => unsubscribe();
@@ -91,6 +92,7 @@ const AddRecipe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     try {
       if (youtubeUrl && !isValidYoutubeUrl(youtubeUrl)) {
         setError("URL YouTube không hợp lệ");
@@ -127,6 +129,8 @@ const AddRecipe = () => {
       setShowSuccessModal(true);
     } catch (err) {
       setError(err.message || "Không thể thêm công thức.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -135,7 +139,7 @@ const AddRecipe = () => {
     router.push(`/cong-thuc/${newRecipeSlug}`);
   };
 
-  if (loading) {
+  if (isAuthLoading) {
     return <div>Đang kiểm tra trạng thái đăng nhập...</div>;
   }
 
@@ -247,9 +251,9 @@ const AddRecipe = () => {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </Form.Group>
-        <Button type="submit" variant="primary" disabled={loading}>
+        <Button type="submit" variant="primary" disabled={isSubmitting}>
           <FontAwesomeIcon icon={faPlus} className="me-1" />
-          {loading ? "Đang xử lý..." : "Thêm Công Thức"}
+          {isSubmitting ? "Đang xử lý..." : "Thêm Công Thức"}
         </Button>
       </Form>
 
