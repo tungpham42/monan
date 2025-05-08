@@ -253,7 +253,7 @@ const AddRecipe = () => {
       </Form>
 
       <Modal show={showSuccessModal} onHide={handleModalClose} centered>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Thêm Công Thức Thành Công</Modal.Title>
         </Modal.Header>
         <Modal.Body>

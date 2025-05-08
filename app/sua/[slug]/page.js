@@ -315,7 +315,7 @@ const EditRecipe = () => {
       </Form>
 
       <Modal show={showSuccessModal} onHide={handleModalClose} centered>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Cập Nhật Công Thức Thành Công</Modal.Title>
         </Modal.Header>
         <Modal.Body>
