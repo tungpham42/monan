@@ -41,7 +41,6 @@ const EditRecipe = () => {
   const [youtubeUrl, setYoutubeUrl] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [newRecipeSlug, setNewRecipeSlug] = useState("");
-  const [loading, setLoading] = useState(false); // Added loading state
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
@@ -150,11 +149,9 @@ const EditRecipe = () => {
       return;
     }
 
-    setLoading(true); // Set loading to true when submission starts
     try {
       if (youtubeUrl && !isValidYoutubeUrl(youtubeUrl)) {
         setError("Liên kết YouTube không hợp lệ");
-        setLoading(false); // Reset loading on error
         return;
       }
 
@@ -183,8 +180,6 @@ const EditRecipe = () => {
       setShowSuccessModal(true);
     } catch (err) {
       setError(err.message || "Cập nhật công thức thất bại.");
-    } finally {
-      setLoading(false); // Reset loading after submission completes
     }
   };
 
@@ -313,9 +308,9 @@ const EditRecipe = () => {
             placeholder="https://www.youtube.com/watch?v=..."
           />
         </Form.Group>
-        <Button type="submit" variant="primary" disabled={loading}>
+        <Button type="submit" variant="primary">
           <FontAwesomeIcon icon={faSave} className="me-1" />
-          {loading ? "Đang xử lý..." : "Cập nhật công thức"}
+          Cập nhật công thức
         </Button>
       </Form>
 
