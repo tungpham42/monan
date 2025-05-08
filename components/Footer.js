@@ -1,6 +1,4 @@
 "use client";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Container } from "react-bootstrap";
 import Link from "next/link";
@@ -20,16 +18,6 @@ const Footer = () => {
             rel="noreferrer"
           >
             Phạm Tùng
-          </a>
-          {", "}
-          <a
-            href="https://github.com/tungpham42/monan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-dark text-decoration-none"
-          >
-            <FontAwesomeIcon icon={faGithub} className="me-1" />
-            MIT License
           </a>
           {" | "}
           <Link
