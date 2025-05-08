@@ -316,7 +316,8 @@ const EditRecipe = () => {
 
       <Modal
         show={showSuccessModal}
-        onHide={() => setShowSuccessModal(false)}
+        backdrop="static"
+        keyboard={false}
         centered
       >
         <Modal.Header>
