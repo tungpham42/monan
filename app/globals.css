@@ -1,0 +1,551 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Pacifico&display=swap");
+
+body {
+  font-family: "Cabin", sans-serif !important; /* Clean, readable base font */
+  background-color: #fff7e6 !important; /* Warm cream, like parchment */
+  color: #4a2c0f !important; /* Rich brown, like coffee or chocolate */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Pacifico", cursive !important; /* Handwritten style for warmth */
+  font-weight: 400 !important;
+  color: #e67e22 !important; /* Warm orange, like carrots or citrus */
+  margin-bottom: 1.5rem !important;
+  text-shadow: 1px 1px 2px rgba(230, 126, 34, 0.2) !important; /* Soft glow */
+}
+
+.recipe-category {
+  color: #f1c40f !important;
+}
+
+a[href^="mailto"],
+a[href^="tel"],
+.card-body .text-primary {
+  color: #2e7d32 !important;
+}
+
+/* Card Styling */
+.card {
+  border: 2px solid #f9e4b7 !important; /* Light golden border, like a recipe card */
+  border-radius: 15px !important;
+  box-shadow: 0 4px 12px rgba(74, 44, 15, 0.1) !important; /* Brown-tinted shadow */
+  background-color: #fffcf5 !important; /* Off-white, like a cookbook page */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out !important;
+}
+
+.card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 6px 18px rgba(74, 44, 15, 0.15) !important; /* Deeper shadow on hover */
+}
+
+.card-title {
+  font-family: "Pacifico", cursive !important; /* Playful title */
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  color: #c0392b !important; /* Deep red, like tomato sauce */
+}
+
+.card-title > a {
+  color: #c0392b !important;
+  text-decoration: none !important;
+}
+
+.card-text {
+  font-size: 0.95rem !important;
+  color: #7f5539 !important; /* Warm brown, like toasted bread */
+}
+
+/* Buttons */
+.btn {
+  border-radius: 10px !important;
+  padding: 0.6rem 1.2rem !important;
+  font-weight: 500 !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.btn-primary {
+  background-color: #2e7d32 !important; /* Deep saffron/paprika, rich and culinary */
+  border-color: #2e7d32 !important;
+}
+
+.btn-primary:hover {
+  background-color: #1b5e20 !important; /* Slightly darker for depth, like a roasted spice */
+  border-color: #1b5e20 !important;
+  transform: scale(1.05) !important; /* Retain the pop effect */
+}
+
+.btn-primary.btn-google {
+  background-color: #4285f4 !important; /* Deep saffron/paprika, rich and culinary */
+  border-color: #4285f4 !important;
+  color: #ffffff !important;
+}
+
+.btn-primary.btn-google:hover {
+  background-color: #357abd !important; /* Slightly darker for depth, like a roasted spice */
+  border-color: #357abd !important;
+  transform: scale(1.05) !important; /* Retain the pop effect */
+}
+
+.btn-outline-danger {
+  color: #fff !important;
+  background-color: #e74c3c !important; /* Red, like a chili pepper */
+  border-color: #e74c3c !important;
+}
+
+.btn-outline-danger:hover {
+  transform: scale(1.05) !important; /* Slight pop effect */
+}
+
+.btn-warning {
+  background-color: #e67e22 !important; /* Warm orange, like spices */
+  border-color: #e67e22 !important;
+  color: #fff !important;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22 !important; /* Deeper orange */
+  border-color: #e67e22 !important;
+  transform: scale(1.05) !important;
+}
+
+/* Navbar */
+.navbar.navbar-dark.bg-dark {
+  background-color: #f39c12 !important; /* Bright orange, like a chef’s apron */
+  background-repeat: repeat !important; /* Tile the pattern */
+  box-shadow: 0 2px 8px rgba(74, 44, 15, 0.15) !important;
+}
+
+.navbar > .container {
+  background-color: rgba(
+    255,
+    252,
+    245,
+    0.3
+  ) !important; /* Semi-transparent overlay to soften the pattern */
+}
+
+.navbar-brand {
+  font-family: "Pacifico", cursive !important;
+  font-weight: 400 !important;
+  font-size: 1.8rem !important;
+  color: #fff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+.nav-link {
+  font-weight: 500 !important;
+  color: #fff !important; /* Default white */
+  transition: color 0.3s ease !important;
+  width: fit-content !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffeaa7 !important; /* Light yellow, like butter */
+}
+
+/* Forms (Input and Select) */
+.form-control,
+.form-select {
+  border-radius: 10px !important;
+  border: 1px solid #e8d5a9 !important; /* Soft beige border */
+  background-color: #fffef0 !important; /* Very light cream */
+  box-shadow: inset 0 1px 3px rgba(74, 44, 15, 0.05) !important;
+  font-size: 1rem !important;
+  color: #4a2c0f !important; /* Rich brown text */
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #e67e22 !important; /* Orange focus */
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.5) !important;
+  outline: none !important; /* Remove default outline */
+}
+
+/* Ensure dropdown arrow matches the theme */
+.form-select {
+  appearance: none !important; /* Remove default arrow */
+  background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="%234a2c0f" viewBox="0 0 16 16"%3E%3Cpath d="M8 12L0 4h16z"/%3E%3C/svg%3E') !important; /* Custom brown arrow */
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;
+  background-size: 12px !important;
+  padding-right: 2rem !important; /* Space for the arrow */
+}
+
+/* Dropdown Styling */
+.dropdown-toggle {
+  border-radius: 10px !important;
+  border: 1px solid #fff !important; /* Matches outline-light */
+  background-color: transparent !important;
+  color: #fff !important;
+  font-family: "Cabin", sans-serif !important;
+  font-weight: 500 !important;
+  padding: 0.5rem 1rem !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.dropdown-toggle:hover {
+  background-color: rgba(
+    255,
+    234,
+    167,
+    0.2
+  ) !important; /* Light yellow hover */
+  transform: scale(1.02) !important; /* Slight pop effect */
+}
+
+.dropdown-menu {
+  background-color: #fffcf5 !important; /* Off-white, like a cookbook page */
+  border: 1px solid #f9e4b7 !important; /* Light golden border */
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(74, 44, 15, 0.1) !important; /* Brown-tinted shadow */
+  padding: 0.5rem 0 !important;
+}
+
+.dropdown-item {
+  font-family: "Cabin", sans-serif !important;
+  font-weight: 500 !important;
+  color: #4a2c0f !important; /* Rich brown text */
+  padding: 0.5rem 1rem !important;
+  transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.dropdown-item:hover {
+  background-color: #f9e4b7 !important; /* Light golden, like a recipe card */
+  color: #e67e22 !important; /* Warm orange text on hover */
+}
+
+.dropdown-item:active,
+.dropdown-item.active,
+.dropdown-item:focus {
+  background-color: #e67e22 !important; /* Warm orange when active */
+  color: #fff !important; /* White text for contrast */
+  outline: none !important;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 10px !important;
+  font-weight: 500 !important;
+  background-color: #fadbd8 !important; /* Light pinkish-red for errors */
+  border-color: #e74c3c !important; /* Red border */
+  color: #c0392b !important;
+}
+
+.alert.alert-info {
+  background-color: #f4e1d2 !important; /* Light cinnamon color */
+  color: #8b4513 !important; /* Rich brown like cocoa */
+}
+
+.alert.alert-warning {
+  background-color: #ffe5b4 !important; /* Warm toasty color */
+  color: #d2691e !important; /* Dark caramel */
+}
+
+/* Base Alert (assuming .alert-error aligns with this) */
+.alert:hover {
+  background-color: #f5c6cb !important; /* Deeper pinkish-red, like a ripe strawberry reduction */
+  box-shadow: 0 6px 18px rgba(192, 57, 43, 0.2) !important; /* Shadow tinted with tomato red for depth */
+}
+
+/* Alert Info */
+.alert.alert-info:hover {
+  background-color: #edd5c1 !important; /* Richer cinnamon, like a freshly baked pastry crust */
+  box-shadow: 0 6px 18px rgba(139, 69, 19, 0.2) !important; /* Cocoa-brown shadow for a toasted effect */
+}
+
+/* Alert Warning */
+.alert.alert-warning:hover {
+  background-color: #fff7d0 !important; /* Golden yellow, like melted butter or caramelized sugar */
+  box-shadow: 0 6px 18px rgba(210, 105, 30, 0.25) !important; /* Caramel-orange shadow for warmth */
+}
+/* Container */
+.container {
+  max-width: 1200px !important;
+  background-color: rgba(
+    255,
+    252,
+    245,
+    0.64
+  ) !important; /* Semi-transparent overlay */
+  padding: 2rem !important;
+  border-radius: 15px !important;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Custom Card Image */
+.custom-card-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  border-bottom: 3px solid #f1c40f !important; /* Yellow accent, like a bookmark */
+}
+
+.custom-card-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.9 !important; /* Slight overlay for warmth */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1.5rem !important;
+  }
+  .btn {
+    margin-bottom: 0.75rem !important;
+  }
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  .navbar-brand {
+    font-size: 1.5rem !important;
+  }
+}
+@media (max-width: 991px) {
+  .btn-outline-light {
+    margin-bottom: 0.75rem !important;
+    width: fit-content !important;
+  }
+}
+/* Pagination */
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem !important;
+  padding: 0.5rem !important;
+  background-color: #fffcf5 !important; /* Off-white, like a cookbook page */
+  border-radius: 15px !important;
+  box-shadow: 0 4px 12px rgba(74, 44, 15, 0.1) !important; /* Brown-tinted shadow */
+}
+
+/* Pagination items (numbers) */
+.custom-pagination .page-item {
+  margin: 0 0.3rem !important;
+  border-radius: 10px !important;
+  background-color: #f9e4b7 !important; /* Light golden, like a recipe card */
+  border: 1px solid #e67e22 !important; /* Warm orange border */
+  color: #4a2c0f !important; /* Rich brown text */
+  font-family: "Cabin", sans-serif !important;
+  font-weight: 500 !important;
+  transition: transform 0.3s ease !important;
+}
+
+.custom-pagination .pagination-item:hover,
+.custom-pagination .pagination-nav:hover {
+  background-color: #e67e22 !important; /* Warm orange on hover */
+  border-color: #e67e22 !important; /* Deeper orange */
+  color: #fff !important;
+  transform: scale(1.1) !important; /* Slight pop effect */
+}
+
+.custom-pagination .pagination-item.active {
+  background-color: #c0392b !important; /* Deep red, like tomato sauce */
+  border-color: #c0392b !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  transform: scale(1.15) !important; /* Slightly larger when active */
+}
+
+/* Previous/Next buttons */
+.custom-pagination .pagination-nav {
+  margin: 0 0.5rem !important;
+  padding: 0.6rem 1.2rem !important;
+  border-radius: 10px !important;
+  color: #fff !important;
+  font-family: "Cabin", sans-serif !important;
+  font-weight: 500 !important;
+  transition: transform 0.3s ease !important;
+}
+
+.custom-pagination .pagination-nav:hover:not(.disabled) {
+  transform: scale(1.05) !important; /* Slight pop effect */
+}
+
+.custom-pagination .pagination-nav.disabled {
+  background-color: #f9e4b7 !important; /* Light golden when disabled */
+  border-color: #e8d5a9 !important; /* Soft beige */
+  color: #7f5539 !important; /* Warm brown */
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+}
+
+/* Ensure proper spacing and alignment */
+.custom-pagination .page-item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.custom-pagination .page-link,
+.related-pagination .btn-outline-primary {
+  padding: 0.5rem 1.2rem !important;
+  background-color: transparent !important;
+  border: none !important;
+  color: #4a2c0f !important;
+}
+.custom-pagination .pagination-nav {
+  display: flex !important;
+  align-items: center !important;
+}
+.custom-pagination .active > .page-link,
+.custom-pagination .page-link.active {
+  color: #fff !important;
+  background-color: #c0392b !important; /* Deep red, like tomato sauce */
+  border-color: #c0392b !important;
+}
+.custom-pagination .disabled > .page-link,
+.custom-pagination .page-link.disabled {
+  color: #7f5539 !important; /* Warm brown */
+  background-color: #f9e4b7 !important; /* Light golden */
+  border-color: #f9e4b7 !important; /* Soft beige */
+}
+
+/* Responsive adjustments for pagination */
+@media (max-width: 768px) {
+  .custom-pagination {
+    flex-wrap: wrap !important;
+    padding: 0.75rem !important;
+  }
+
+  .custom-pagination .pagination-item {
+    margin: 0.2rem !important;
+    padding: 0.5rem 0.8rem !important;
+  }
+
+  .custom-pagination .pagination-nav {
+    margin: 0.2rem 0.4rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+}
+/* Ensure dropdowns fit well on mobile */
+@media (max-width: 768px) {
+  .navbar-nav .dropdown-toggle {
+    padding: 0.4rem 0.8rem !important; /* Smaller padding on mobile */
+    font-size: 0.9rem !important; /* Slightly smaller text */
+  }
+
+  .navbar-nav .dropdown-menu {
+    min-width: auto !important; /* Allow dropdowns to shrink */
+    width: 100% !important; /* Full width on mobile */
+  }
+
+  .navbar-collapse {
+    padding: 1rem 0 !important; /* Add padding inside collapsed menu */
+  }
+}
+
+.page-link {
+  color: #4a2c0f !important;
+  font-weight: 500 !important;
+  transition: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.alert-success {
+  border-radius: 10px !important; /* Consistent with other rounded elements */
+  font-family: "Cabin", sans-serif !important; /* Clean, readable font */
+  font-weight: 500 !important; /* Matches button and dropdown weights */
+  background-color: #d4edda !important; /* Light green, like fresh herbs or lime zest */
+  border: 1px solid #2e7d32 !important; /* Deep green border, matching btn-primary */
+  color: #2e7d32 !important; /* Rich green text, like parsley or basil */
+  padding: 1rem !important; /* Comfortable padding */
+  box-shadow: 0 4px 12px rgba(74, 44, 15, 0.1) !important; /* Brown-tinted shadow */
+}
+
+/* Hover effect for interactivity */
+.alert-success:hover {
+  background-color: #c8e6c9 !important; /* Slightly deeper green on hover */
+  box-shadow: 0 6px 18px rgba(74, 44, 15, 0.15) !important; /* Deeper shadow */
+}
+/* List Group Styling (for ingredients and steps) */
+.list-group {
+  border-radius: 12px !important; /* Slightly softer than cards for a nested feel */
+  background-color: #fffef0 !important; /* Very light cream, like a fresh recipe page */
+  border: 1px solid #f9e4b7 !important; /* Light golden border, like a pastry edge */
+  box-shadow: 0 2px 8px rgba(74, 44, 15, 0.08) !important; /* Subtle brown-tinted shadow */
+  padding: 0.5rem !important; /* Cozy padding */
+}
+
+/* List Group Item Styling */
+.list-group-item {
+  background-color: #fffcf5 !important; /* Off-white, like a cookbook page */
+  border: none !important; /* Remove default borders for a seamless look */
+  border-bottom: 1px dashed #e8d5a9 !important; /* Dashed beige line, like a recipe note */
+  color: #7f5539 !important; /* Warm brown, like toasted bread */
+  font-family: "Cabin", sans-serif !important; /* Clean, readable font */
+  font-size: 1rem !important; /* Comfortable reading size */
+  padding: 1rem 1.25rem !important; /* Spacious padding for a handwritten feel */
+  transition: background-color 0.2s ease, transform 0.2s ease !important;
+}
+
+/* Hover effect for interactivity */
+.list-group-item:hover {
+  background-color: #f9e4b7 !important; /* Light golden, like a highlighted recipe step */
+  color: #e67e22 !important; /* Warm orange text, like a citrus zest accent */
+  transform: translateX(
+    5px
+  ) !important; /* Slight shift right, like flipping a page */
+}
+
+/* First and last items for rounded corners */
+.list-group-item:first-child {
+  border-top-left-radius: 12px !important;
+  border-top-right-radius: 12px !important;
+}
+
+.list-group-item:last-child {
+  border-bottom: none !important; /* Remove dashed line on last item */
+  border-bottom-left-radius: 12px !important;
+  border-bottom-right-radius: 12px !important;
+}
+
+/* Active state (if applicable, e.g., for selected comments) */
+.list-group-item.active {
+  background-color: #e67e22 !important; /* Warm orange, like a spice accent */
+  color: #fff !important; /* White text for contrast */
+  font-weight: 500 !important;
+}
+
+/* Specific styling for ingredients and steps with item-number */
+.list-group-item .item-number {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  background-color: #f1c40f !important; /* Bright yellow, like a mustard seed */
+  color: #4a2c0f !important; /* Rich brown contrast */
+  font-family: "Pacifico", cursive !important; /* Handwritten vibe */
+  font-size: 0.9rem !important;
+  border-radius: 50% !important;
+  margin-right: 0.75rem !important;
+  box-shadow: 0 2px 4px rgba(74, 44, 15, 0.2) !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.list-group-item:hover .item-number {
+  background-color: #e67e22 !important; /* Orange on hover, like a roasted spice */
+  color: #fff !important;
+  transform: scale(1.1) !important; /* Slight pop effect */
+}
