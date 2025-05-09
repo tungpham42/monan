@@ -102,8 +102,7 @@ export default function RecipeList({ recipes }) {
           thức
         </h2>
         <Button variant="primary" onClick={handleReset}>
-          <FontAwesomeIcon icon={faUndo} className="me-1" />
-          Đặt lại bộ lọc
+          <FontAwesomeIcon icon={faUndo} />
         </Button>
       </div>
       <Form
