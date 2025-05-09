@@ -10,7 +10,12 @@ import Alert from "react-bootstrap/Alert";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUtensils, faEye } from "@fortawesome/free-solid-svg-icons";
+import {
+  faSearch,
+  faUtensils,
+  faEye,
+  faUndo,
+} from "@fortawesome/free-solid-svg-icons";
 import Pagination from "@/components/Pagination";
 
 export default function RecipeList({ recipes }) {
@@ -76,6 +81,14 @@ export default function RecipeList({ recipes }) {
     setCurrentPage(1); // Reset to page 1 on filter change
   };
 
+  // Handle reset filters
+  const handleReset = () => {
+    setSearchTerm("");
+    setCategory("");
+    setSortOption("alphabetAsc");
+    setCurrentPage(1);
+  };
+
   // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -83,15 +96,21 @@ export default function RecipeList({ recipes }) {
 
   return (
     <div>
-      <h2>
-        <FontAwesomeIcon icon={faUtensils} className="me-2" /> Khám phá công
-        thức
-      </h2>
+      <div className="d-flex align-items-center justify-content-between mb-3">
+        <h2>
+          <FontAwesomeIcon icon={faUtensils} className="me-2" /> Khám phá công
+          thức
+        </h2>
+        <Button variant="primary" onClick={handleReset}>
+          <FontAwesomeIcon icon={faUndo} className="me-1" />
+          Đặt lại bộ lọc
+        </Button>
+      </div>
       <Form
         className="mb-4 p-3 bg-white shadow-sm rounded"
         onSubmit={handleSubmit}
       >
-        <Row>
+        <Row className="align-items-center">
           <Col md={6}>
             <Form.Group className="mb-3 mb-md-0 position-relative">
               <Form.Control
@@ -131,7 +150,7 @@ export default function RecipeList({ recipes }) {
               </Form.Select>
             </Form.Group>
           </Col>
-          <Col md={3} className="mt-3 mt-sm-3 mt-md-0 mt-lg-0 mt-xl-0">
+          <Col md={3}>
             <Form.Group>
               <Form.Select
                 value={sortOption}
