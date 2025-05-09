@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata = {
   title: "Chia sẻ món ăn - Trang chủ",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           <div className="container my-4">{children}</div>
           <Footer />
         </AuthProvider>
+        <BackToTop />
       </body>
     </html>
   );
