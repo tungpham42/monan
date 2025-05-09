@@ -35,6 +35,10 @@ a[href^="tel"],
   color: #2e7d32 !important;
 }
 
+.modal-header,
+.modal-footer {
+  border: none !important;
+}
 /* Card Styling */
 .card {
   border: 2px solid #f9e4b7 !important; /* Light golden border, like a recipe card */
