@@ -123,6 +123,54 @@ a[href^="tel"],
   transform: scale(1.05) !important;
 }
 
+.btn-facebook {
+  background-color: #1877f2 !important; /* Facebook brand blue */
+  border-color: #1877f2 !important;
+  color: #fff !important;
+}
+
+.btn-facebook:hover {
+  background-color: #1565c0 !important; /* Darker Facebook blue */
+  border-color: #1565c0 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-x {
+  background-color: #000000 !important; /* X brand black */
+  border-color: #000000 !important;
+  color: #fff !important;
+}
+
+.btn-x:hover {
+  background-color: #333333 !important; /* Slightly lighter black/gray for hover */
+  border-color: #333333 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-pinterest {
+  background-color: #e60023 !important; /* Pinterest brand red */
+  border-color: #e60023 !important;
+  color: #fff !important;
+}
+
+.btn-pinterest:hover {
+  background-color: #cc0000 !important; /* Darker Pinterest red */
+  border-color: #cc0000 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-whatsapp {
+  background-color: #25d366 !important; /* WhatsApp brand green */
+  border-color: #25d366 !important;
+  color: #fff !important;
+}
+
+.btn-whatsapp:hover {
+  background-color: #20b558 !important; /* Darker WhatsApp green */
+  border-color: #20b558 !important;
+  transform: scale(1.05) !important;
+}
+
 /* Navbar */
 .navbar.navbar-dark.bg-dark {
   background-color: #f39c12 !important; /* Bright orange, like a chef’s apron */

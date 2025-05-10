@@ -22,6 +22,7 @@ import {
   Row,
   Col,
   Spinner,
+  Image,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -35,8 +36,15 @@ import {
   faChevronRight,
   faTag,
   faUser,
+  faShareAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+  faYoutube,
+  faFacebook,
+  faXTwitter,
+  faPinterest,
+  faWhatsapp,
+} from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
 const RecipeDetail = () => {
@@ -200,6 +208,10 @@ const RecipeDetail = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
+  // Generate share URL
+  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareTitle = recipe?.title || "Check out this recipe!";
+
   if (loading) {
     return (
       <div className="text-center">
@@ -232,12 +244,67 @@ const RecipeDetail = () => {
         <Card.Body>
           <Card.Title className="mb-3">{recipe.title}</Card.Title>
           <Card.Text className="mb-2">{recipe.description}</Card.Text>
+          {/* Share Buttons */}
+          <div className="mb-4">
+            <h6>
+              <FontAwesomeIcon icon={faShareAlt} className="me-2" />
+              Chia sẻ công thức
+            </h6>
+            <div className="d-flex gap-2">
+              <Button
+                className="btn-facebook"
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+                  shareUrl
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
+                <FontAwesomeIcon icon={faFacebook} />
+              </Button>
+              <Button
+                className="btn-x"
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  shareUrl
+                )}&text=${encodeURIComponent(shareTitle)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
+                <FontAwesomeIcon icon={faXTwitter} />
+              </Button>
+              <Button
+                className="btn-pinterest"
+                href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
+                  shareUrl
+                )}&media=${encodeURIComponent(
+                  recipe.imageUrl || ""
+                )}&description=${encodeURIComponent(shareTitle)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
+                <FontAwesomeIcon icon={faPinterest} />
+              </Button>
+              <Button
+                className="btn-whatsapp"
+                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
+                  `${shareTitle} ${shareUrl}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
+                <FontAwesomeIcon icon={faWhatsapp} />
+              </Button>
+            </div>
+          </div>
           <h5 className="mb-3 text-primary">
             <FontAwesomeIcon icon={faUser} className="me-2" />
             Tác giả: <strong>{authorName}</strong>
           </h5>
           {recipe.category && (
-            <h6 className="mb-4 recipe-category">
+            <h6 className="mb W-4 recipe-category">
               <FontAwesomeIcon icon={faTag} className="me-2" />
               <span style={{ fontStyle: "italic", fontWeight: "500" }}>
                 {recipe.category === "Breakfast"
