@@ -55,7 +55,7 @@ a[href^="tel"],
 
 .card-title {
   font-family: "Pacifico", cursive !important; /* Playful title */
-  font-size: 1.5rem !important;
+  font-size: 1.5rem;
   font-weight: 400 !important;
   color: #c0392b !important; /* Deep red, like tomato sauce */
 }

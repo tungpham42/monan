@@ -242,7 +242,7 @@ const RecipeDetail = () => {
           ></div>
         )}
         <Card.Body>
-          <Card.Title className="mb-3">{recipe.title}</Card.Title>
+          <Card.Title className="mb-3 display-6">{recipe.title}</Card.Title>
           <Card.Text className="mb-2">{recipe.description}</Card.Text>
           {/* Share Buttons */}
           <div className="mb-4">
