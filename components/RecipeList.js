@@ -158,7 +158,9 @@ export default function RecipeList({ recipes }) {
                   setCurrentPage(1); // Reset to page 1 on sort change
                 }}
               >
-                <option value="">Sắp xếp theo...</option>
+                <option disabled value="">
+                  Sắp xếp theo...
+                </option>
                 <option value="alphabetAsc">Theo thứ tự chữ cái (A-Z)</option>
                 <option value="alphabetDesc">Theo thứ tự chữ cái (Z-A)</option>
                 <option value="dateAsc">Ngày (Cũ nhất trước)</option>
