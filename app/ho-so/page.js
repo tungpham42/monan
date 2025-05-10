@@ -378,7 +378,9 @@ const Profile = () => {
             </h3>
             <Form.Group className="ms-3" style={{ minWidth: "200px" }}>
               <Form.Select value={sortOption} onChange={handleSortChange}>
-                <option value="">Sắp xếp theo...</option>
+                <option disabled value="">
+                  Sắp xếp theo...
+                </option>
                 <option value="alphabetAsc">Theo thứ tự chữ cái (A-Z)</option>
                 <option value="alphabetDesc">Theo thứ tự chữ cái (Z-A)</option>
                 <option value="dateAsc">Ngày (Cũ nhất trước)</option>
