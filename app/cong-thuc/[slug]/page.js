@@ -246,10 +246,10 @@ const RecipeDetail = () => {
           <Card.Text className="mb-2">{recipe.description}</Card.Text>
           {/* Share Buttons */}
           <div className="mb-4">
-            <h6>
+            <h5>
               <FontAwesomeIcon icon={faShareAlt} className="me-2" />
               Chia sẻ công thức
-            </h6>
+            </h5>
             <div className="d-flex gap-2">
               <Button
                 className="btn-facebook"
