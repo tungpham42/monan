@@ -133,7 +133,7 @@ export default function RecipeList({ recipes }) {
             </Form.Group>
           </Col>
           <Col md={3}>
-            <Form.Group>
+            <Form.Group className="mb-3 mb-md-0 position-relative">
               <Form.Select
                 value={category}
                 onChange={(e) => {
@@ -150,7 +150,7 @@ export default function RecipeList({ recipes }) {
             </Form.Group>
           </Col>
           <Col md={3}>
-            <Form.Group>
+            <Form.Group className="mb-0 position-relative">
               <Form.Select
                 value={sortOption}
                 onChange={(e) => {
