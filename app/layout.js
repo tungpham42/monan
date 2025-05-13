@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "@/components/Header";
@@ -34,6 +35,7 @@ export default function RootLayout({ children }) {
         </AuthProvider>
         <BackToTop />
       </body>
+      <GoogleAnalytics gaId="G-SNZEK15K5F" />
     </html>
   );
 }
