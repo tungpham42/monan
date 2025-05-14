@@ -28,11 +28,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="vi">
       <body>
-        <AuthProvider>
-          <Header />
-          <div className="container my-4">{children}</div>
-          <Footer />
-        </AuthProvider>
+        <Header />
+        <div className="container my-4">{children}</div>
+        <Footer />
         <BackToTop />
       </body>
       <GoogleAnalytics gaId="G-SNZEK15K5F" />
