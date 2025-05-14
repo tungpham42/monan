@@ -1,3 +1,5 @@
+import PublicRoute from "@/context/PublicRoute";
+
 export const metadata = {
   title: "Chia sẻ món ăn - Đăng ký",
   description: "Đăng ký để thêm công thức của bạn!",
@@ -19,7 +21,9 @@ export const metadata = {
 export default function RegisterLayout({ children }) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body>
+        <PublicRoute>{children}</PublicRoute>
+      </body>
     </html>
   );
 }

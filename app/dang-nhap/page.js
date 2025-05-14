@@ -7,11 +7,7 @@ import {
   createUserDocument,
   updateUsernameInComments,
 } from "@/firebase/config";
-import {
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { Form, Button, Alert, Card } from "react-bootstrap";
 import { useRouter } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -27,19 +23,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-
-  // Check if user is already logged in
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is logged in, redirect to homepage
-        router.push("/");
-      }
-    });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, [router]);
 
   useEffect(() => {
     setError(""); // Reset error on component mount
@@ -65,8 +48,6 @@ const Login = () => {
         user.uid,
         user.displayName || userData.username
       );
-
-      router.push("/");
     } catch (err) {
       setError("Email hoặc mật khẩu không hợp lệ.");
     }
@@ -82,8 +63,6 @@ const Login = () => {
 
       // Update username in comments
       await updateUsernameInComments(user.uid, user.displayName);
-
-      router.push("/");
     } catch (err) {
       setError("Đăng nhập với Google thất bại. Thử lại.");
     }

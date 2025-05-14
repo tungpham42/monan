@@ -10,7 +10,6 @@ import {
   createUserWithEmailAndPassword,
   signInWithPopup,
   updateProfile,
-  onAuthStateChanged,
 } from "firebase/auth";
 import { Form, Button, Alert, Card } from "react-bootstrap";
 import { useRouter } from "next/navigation";
@@ -30,19 +29,6 @@ const Register = () => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-
-  // Check if user is already logged in
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is logged in, redirect to homepage
-        router.push("/");
-      }
-    });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, [router]);
 
   useEffect(() => {
     setError(""); // Reset error to empty string on component mount
@@ -72,8 +58,6 @@ const Register = () => {
 
       // Update username in comments
       await updateUsernameInComments(user.uid, username);
-
-      router.push("/");
     } catch (err) {
       setError("Đăng ký thất bại. Thử lại.");
     }
@@ -89,8 +73,6 @@ const Register = () => {
 
       // Update username in comments
       await updateUsernameInComments(user.uid, user.displayName);
-
-      router.push("/");
     } catch (err) {
       setError("Đăng ký với Google thất bại. Thử lại.");
     }
