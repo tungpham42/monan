@@ -16,10 +16,11 @@ import {
   faBook,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
   const router = useRouter();
+  const pathname = usePathname(); // Get current path
   const [user, setUser] = useState(null); // Store authenticated user
   const [isAdmin, setIsAdmin] = useState(false); // Store admin status
   const [loading, setLoading] = useState(true); // Track loading state
@@ -66,39 +67,58 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} href="/">
+          <Nav id="left-menu" className="me-auto">
+            <Nav.Link as={Link} href="/" active={pathname === "/"}>
               <FontAwesomeIcon icon={faHome} className="me-1" />
               Trang chủ
             </Nav.Link>
-            <Nav.Link as={Link} href="/huong-dan">
+            <Nav.Link
+              as={Link}
+              href="/huong-dan"
+              active={pathname === "/huong-dan"}
+            >
               <FontAwesomeIcon icon={faBook} className="me-1" />
               Hướng dẫn
             </Nav.Link>
           </Nav>
-          <Nav className="align-items-left justify-content-between gap-2">
+          <Nav
+            id="right-menu"
+            className="align-items-left justify-content-between gap-2"
+          >
             {isLoggedIn ? (
               <NavDropdown
                 title={
                   <>
-                    <FontAwesomeIcon icon={faUser} className="me-1" />{" "}
-                    {user.displayName || "Người dùng"}{" "}
+                    <FontAwesomeIcon icon={faUser} className="me-1" />
+                    {user.displayName || "Người dùng"}
                     {/* Fallback if no displayName */}
                   </>
                 }
                 id="user-dropdown"
                 align="end"
               >
-                <NavDropdown.Item as={Link} href="/ho-so">
+                <NavDropdown.Item
+                  as={Link}
+                  href="/ho-so"
+                  className={pathname === "/ho-so" ? "active" : ""}
+                >
                   <FontAwesomeIcon icon={faUser} className="me-1" />
                   Hồ sơ
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} href="/them">
+                <NavDropdown.Item
+                  as={Link}
+                  href="/them"
+                  className={pathname === "/them" ? "active" : ""}
+                >
                   <FontAwesomeIcon icon={faPlus} className="me-1" />
                   Thêm công thức
                 </NavDropdown.Item>
                 {isAdmin && (
-                  <NavDropdown.Item as={Link} href="/quan-tri">
+                  <NavDropdown.Item
+                    as={Link}
+                    href="/quan-tri"
+                    className={pathname === "/quan-tri" ? "active" : ""}
+                  >
                     <FontAwesomeIcon icon={faTools} className="me-1" />
                     Quản trị
                   </NavDropdown.Item>
@@ -111,11 +131,19 @@ const Header = () => {
               </NavDropdown>
             ) : (
               <>
-                <Nav.Link as={Link} href="/dang-nhap">
+                <Nav.Link
+                  as={Link}
+                  href="/dang-nhap"
+                  active={pathname === "/dang-nhap"}
+                >
                   <FontAwesomeIcon icon={faSignInAlt} className="me-1" />
                   Đăng nhập
                 </Nav.Link>
-                <Nav.Link as={Link} href="/dang-ky">
+                <Nav.Link
+                  as={Link}
+                  href="/dang-ky"
+                  active={pathname === "/dang-ky"}
+                >
                   <FontAwesomeIcon icon={faUserPlus} className="me-1" />
                   Đăng ký
                 </Nav.Link>
