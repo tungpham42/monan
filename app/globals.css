@@ -171,6 +171,18 @@ a[href^="tel"],
   transform: scale(1.05) !important;
 }
 
+.btn-linkedin {
+  background-color: #0077b5 !important; /* LinkedIn brand blue */
+  border-color: #0077b5 !important;
+  color: #fff !important;
+}
+
+.btn-linkedin:hover {
+  background-color: #005582 !important; /* Darker LinkedIn blue */
+  border-color: #005582 !important;
+  transform: scale(1.05) !important;
+}
+
 /* Navbar */
 .navbar.navbar-dark.bg-dark {
   background-color: #f39c12 !important; /* Bright orange, like a chef’s apron */

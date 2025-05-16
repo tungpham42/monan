@@ -44,6 +44,7 @@ import {
   faXTwitter,
   faPinterest,
   faWhatsapp,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 
@@ -272,6 +273,21 @@ const RecipeDetail = () => {
                 size="lg"
               >
                 <FontAwesomeIcon icon={faXTwitter} />
+              </Button>
+              <Button
+                className="btn-linkedin"
+                href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(
+                  shareUrl
+                )}&title=${encodeURIComponent(
+                  shareTitle
+                )}&summary=${encodeURIComponent(
+                  recipe.description || shareTitle
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg"
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
               </Button>
               <Button
                 className="btn-pinterest"
