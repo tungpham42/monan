@@ -43,7 +43,6 @@ import {
   faFacebook,
   faXTwitter,
   faPinterest,
-  faWhatsapp,
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
@@ -259,7 +258,7 @@ const RecipeDetail = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                size="lg"
+                size="sm"
               >
                 <FontAwesomeIcon icon={faFacebook} />
               </Button>
@@ -270,7 +269,7 @@ const RecipeDetail = () => {
                 )}&text=${encodeURIComponent(shareTitle)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                size="lg"
+                size="sm"
               >
                 <FontAwesomeIcon icon={faXTwitter} />
               </Button>
@@ -285,7 +284,7 @@ const RecipeDetail = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                size="lg"
+                size="sm"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </Button>
@@ -298,20 +297,9 @@ const RecipeDetail = () => {
                 )}&description=${encodeURIComponent(shareTitle)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                size="lg"
+                size="sm"
               >
                 <FontAwesomeIcon icon={faPinterest} />
-              </Button>
-              <Button
-                className="btn-whatsapp"
-                href={`https://api.whatsapp.com/send?text=${encodeURIComponent(
-                  `${shareTitle} ${shareUrl}`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-              >
-                <FontAwesomeIcon icon={faWhatsapp} />
               </Button>
             </div>
           </div>
