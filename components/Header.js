@@ -14,6 +14,7 @@ import {
   faUserPlus,
   faBowlFood,
   faBook,
+  faBowlRice,
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -71,6 +72,10 @@ const Header = () => {
             <Nav.Link as={Link} href="/" active={pathname === "/"}>
               <FontAwesomeIcon icon={faHome} className="me-1" />
               Trang chủ
+            </Nav.Link>
+            <Nav.Link as={Link} href="/goi-y" active={pathname === "/goi-y"}>
+              <FontAwesomeIcon icon={faBowlRice} className="me-1" />
+              Gợi ý theo tuần
             </Nav.Link>
             <Nav.Link
               as={Link}
