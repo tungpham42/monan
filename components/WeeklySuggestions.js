@@ -165,9 +165,7 @@ export default function WeeklySuggestions({ recipes }) {
                             >
                               {recipe.title}
                             </Link>
-                            <p className="my-2">
-                              {recipe.description.slice(0, 300)}...
-                            </p>
+                            <p className="my-2">{recipe.description}</p>
                             <Button
                               as={Link}
                               href={`/cong-thuc/${recipe.slug}`}

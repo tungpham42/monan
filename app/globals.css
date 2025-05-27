@@ -476,7 +476,7 @@ a.text-decoration-none:hover {
   font-size: 1.5rem !important;
   color: #c0392b !important;
   background-color: #fffef0 !important;
-  border-radius: 12px 12px 0 0 !important;
+  border-radius: 12px !important;
   box-shadow: 0 2px 8px rgba(74, 44, 15, 0.1) !important;
   transition: background-color 0.3s ease, transform 0.2s ease !important;
   border: none !important;
@@ -500,6 +500,11 @@ a.text-decoration-none:hover {
   background-color: #fffcf5 !important;
   padding: 1.5rem !important;
   border: none !important;
+}
+
+.accordion-header .card-title {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
 }
 
 /* ============ PAGINATION ============ */
