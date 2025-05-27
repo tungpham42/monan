@@ -5,7 +5,6 @@ import { Card, Button, Row, Col, Accordion, Spinner } from "react-bootstrap";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faRedo } from "@fortawesome/free-solid-svg-icons";
-import "./WeeklySuggestions.css";
 
 export default function WeeklySuggestions({ recipes }) {
   const [weeklyPlan, setWeeklyPlan] = useState([]);
