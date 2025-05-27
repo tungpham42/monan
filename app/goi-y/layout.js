@@ -5,7 +5,7 @@ export const metadata = {
     title: "Chia sẻ món ăn - Gợi ý",
     description: "Gợi ý món ăn theo tuần.",
     type: "website",
-    url: "https://monan.io.vn/huong-dan",
+    url: "https://monan.io.vn/goi-y",
     images: [
       {
         url: "https://monan.io.vn/1200x630.jpg",
